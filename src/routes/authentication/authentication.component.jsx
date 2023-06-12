@@ -1,6 +1,8 @@
+import SignInForm from "../../components/sign-in-form/sign-in-form.component";
+
 function Authentication () {
 	return (
-		<h1>Auth Page</h1>
+		<SignInForm />
 	)
 }
 
