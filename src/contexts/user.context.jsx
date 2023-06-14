@@ -1,6 +1,6 @@
 import { useState, createContext, useEffect } from "react";
-import { createUserDocumentFromAuth, onAuthStateChangedListener, auth } from "../utils/firebase/firebase.utils";
-import { useNavigate } from "react-router-dom";
+import { onAuthStateChangedListener} from "../utils/firebase/firebase.utils";
+import { createUserDoc } from "../services/user.services";
 
 export const UserContext = createContext({
 	currentUser: null,
@@ -16,7 +16,7 @@ export function UserProvider({ children }){
 	useEffect(() => {
 		const unsubscribe = onAuthStateChangedListener((user) => {
 			if(user){
-				createUserDocumentFromAuth(user);
+				createUserDoc(user);
 			}
 			setCurrentUser(user);
 			setLoading(false);

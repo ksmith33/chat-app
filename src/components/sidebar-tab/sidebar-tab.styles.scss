@@ -1,0 +1,13 @@
+.sidebar-tab-container{
+	width: 34%;
+	height: 100%;
+	text-align: center;
+	&:hover{
+		background-color: #6096B4;
+		cursor: pointer;
+	}
+
+	&.selected{
+		background-color: #6096B4;
+	}
+}
