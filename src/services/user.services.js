@@ -17,7 +17,6 @@ export const createUserDoc = async (userAuth) => {
 	if(!userSnapshot.exists()){
 		const { displayName, email, uid } = userAuth;
 		const createdAt = new Date();
-		const groups = [];
 
 		try{
 			await setDoc(userDocRef, {
@@ -25,7 +24,7 @@ export const createUserDoc = async (userAuth) => {
 				displayName,
 				email,
 				createdAt,
-				groups,
+				groups: [doc(db, 'groups', '7it9zoDQNngnr3GNro65')],
 			})
 		}catch (error){
 			console.log("error creating user", error.message);

@@ -1,7 +1,7 @@
-import './tabs.styles.scss';
+import './sidebar-tabs.styles.scss';
 import SidebarTab from '../sidebar-tab/sidebar-tab.component';
 
-function Tabs ({ selectedTab, setSelectedTab, tabs}) {
+function SidebarTabs ({ selectedTab, setSelectedTab, tabs}) {
 
 	function handleTabClick (tabIndex) {
 		setSelectedTab(tabIndex);
@@ -21,4 +21,4 @@ function Tabs ({ selectedTab, setSelectedTab, tabs}) {
 	)
 }
 
-export default Tabs;
+export default SidebarTabs;
