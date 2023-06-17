@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { UserContext } from "./contexts/user.context";
 
 function App() {
-	const { currentUser, loading} = useContext(UserContext);
+	const { currentUser, loading } = useContext(UserContext);
 	
   return (
     <Routes>

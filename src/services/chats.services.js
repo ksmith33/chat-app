@@ -1,15 +1,10 @@
-import { getDoc, doc, getDocs, query} from "firebase/firestore"
+import { getDoc, doc, getDocs, query, collection, where} from "firebase/firestore"
 import { auth, db } from "../utils/firebase/firebase.utils"
 
-export const getUserChats = async () => {
-	const { uid } = auth.currentUser;
-	const userDocRef = doc(db, 'users', uid);
-	const userDocSnapshot = await getDoc(userDocRef);
-	const groupRefsArray = userDocSnapshot.data().groups;
+export const getUserChats = async (uid) => {
+	const groupsRef = collection(db, 'groups');
+	const q = query(groupsRef, where("members", "array-contains", uid));
+	const querySnapshot = await getDocs(q);
 
-	const groupDocsArray = await Promise.all(groupRefsArray.map(async groupDocRef => {
-		return (await getDoc(groupDocRef)).data();
-	}))
-
-	return groupDocsArray;
+	return querySnapshot.data()
 }

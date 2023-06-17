@@ -24,12 +24,25 @@ export const createUserDoc = async (userAuth) => {
 				displayName,
 				email,
 				createdAt,
-				groups: [doc(db, 'groups', '7it9zoDQNngnr3GNro65')],
+				groups: [doc(db, 'groups', 'GwhBZihVBjzMZrG9ABvm')],
 			})
 		}catch (error){
 			console.log("error creating user", error.message);
 		}
 	}
-
+	
 	return userDocRef;
+}
+
+export const isDnAvailable = async (displayName) => {
+	if(!displayName) return;
+
+	const dnDocRef = doc(db, 'displayNames', displayName);
+	const dnDocSnapshot = await getDoc(dnDocRef);
+
+	if(dnDocSnapshot.exists()){
+		return false;
+	}
+
+	return true;
 }

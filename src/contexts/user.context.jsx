@@ -11,9 +11,8 @@ export function UserProvider({ children }){
 	const [currentUser, setCurrentUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 	
-	const value = { currentUser, setCurrentUser, loading };
-
 	useEffect(() => {
+		//might not matter when do username thing
 		const unsubscribe = onAuthStateChangedListener((user) => {
 			if(user){
 				createUserDoc(user);
@@ -25,5 +24,6 @@ export function UserProvider({ children }){
 		return unsubscribe;
 	}, []);
 
+	const value = { currentUser, setCurrentUser, loading };
 	return <UserContext.Provider value={ value }> { children } </UserContext.Provider>
 };

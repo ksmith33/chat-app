@@ -3,9 +3,9 @@ function SidebarGroup ({ group }){
 	const { messageText, sentAt, sentBy } = recentMessage;
 	return (
 		<div className="sidebar-group-container">
-			<h1>{ name } </h1>
+			<h2>{ name } </h2>
 			<div className="recent-message-group">
-				<h2>{ sentBy }</h2>
+				<h3>{ sentBy }</h3>
 				<div className="message-body">
 					<span>{ messageText }</span>
 					<span> { new Intl.DateTimeFormat('en-US', {hour: '2-digit', minute: '2-digit'}).format(sentAt) } </span>

@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {
+	createUserWithEmailAndPassword,
 	getAuth,
 	GoogleAuthProvider,
 	onAuthStateChanged,
@@ -26,6 +27,11 @@ provider.setCustomParameters({
 });
 
 export const auth = getAuth();
+export const createUser = async (email, password) => {
+	if(!email || !password) return;
+	
+	return await createUserWithEmailAndPassword(auth, email, password);
+}
 export const signInWithGooglePopup = async () => signInWithPopup(auth, provider);
 export const signOutUser = async () => signOut(auth);
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);

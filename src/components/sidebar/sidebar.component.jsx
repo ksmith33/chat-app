@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './sidebar.styles.scss';
-import SidebarTabs from '../tabs/sidebar-tabs.component';
+import SidebarTabs from '../sidebar-tabs/sidebar-tabs.component';
 import SidebarGroups from '../sidebar-groups/sidebar-groups.component';
 
 const sidebarTabs = [
@@ -11,7 +11,7 @@ const sidebarTabs = [
 	},
 	{
 		id: 2,
-		name: "Channels",
+		name: "Groups",
 		//changeMaybe
 		groupType: 1
 	},
