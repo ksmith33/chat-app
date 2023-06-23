@@ -1,0 +1,27 @@
+.button-container {
+	border: none;
+	
+	&.rounded{
+		background-color: white;
+		border-radius: 50%;
+		font-size: 2rem;
+		width: 1.5em;
+		height: 1.5em;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	&.invisible{
+		background-color: transparent;
+		font-size: 2rem;
+		color: white;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}

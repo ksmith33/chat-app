@@ -1,0 +1,23 @@
+.sidebar-group-container {
+	padding: 1em 1em;
+
+	&:hover{
+		background-color: #ffffff;
+		cursor: pointer;
+		color: black;
+	}
+
+	&.selected{
+		background-color: #ffffff;
+		color: black;
+	}
+
+	h2 {
+		margin: 0em 0em 0em 0em;
+	}
+}
+
+.message-header{
+	display: flex;
+	justify-content: space-between;
+}

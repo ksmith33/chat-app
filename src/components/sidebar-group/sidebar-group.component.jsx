@@ -1,15 +1,19 @@
-function SidebarGroup ({ group }){
+import './sidebar-group.styles.scss';
+
+function SidebarGroup ({ group, onClick, selected}){
 	const {name, recentMessage} = group;
 	const { messageText, sentAt, sentBy } = recentMessage;
+
 	return (
-		<div className="sidebar-group-container">
+		//button?
+		<div className= {`sidebar-group-container ${selected ? "selected" : ""}`}onClick={onClick}>
 			<h2>{ name } </h2>
-			<div className="recent-message-group">
-				<h3>{ sentBy }</h3>
-				<div className="message-body">
-					<span>{ messageText }</span>
-					<span> { new Intl.DateTimeFormat('en-US', {hour: '2-digit', minute: '2-digit'}).format(sentAt) } </span>
+			<div className="recent-message">
+				<div className='message-header'>
+					<h3>{ sentBy }</h3>
+					<h3>{ new Intl.DateTimeFormat('en-US', {hour: '2-digit', minute: '2-digit'}).format(sentAt) } </h3>
 				</div>
+				<span>{ messageText }</span>
 			</div>
 		</div>
 	)

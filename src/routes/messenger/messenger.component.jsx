@@ -7,14 +7,22 @@ import "./messenger.styles.scss";
 import { UserContext } from "../../contexts/user.context";
 import { onSnapshot, collection, query, where} from "firebase/firestore";
 import { db } from "../../utils/firebase/firebase.utils";
+import Chat from "../../components/chat/chat.component";
+import { ChatContext } from "../../contexts/chat.context";
 
 function Messenger () {
 	const [chats, setChats] = useState([]);
-	const [selectedChat, setSelectedChat] = useState(null);
+	const [loading, setIsLoading] = useState(true);
+
 	const { currentUser } = useContext(UserContext);
+	const {selectedChat} = useContext(ChatContext);
+
+	const selectedChatData = chats[selectedChat];
 
 	//console.log(chats)
 	useEffect(() => {
+		//might move into own method
+		setIsLoading(true);
 		const { uid } = currentUser;
 		const groupsRef = collection(db, 'groups');
 		const q = query(groupsRef, where("members", "array-contains", uid));
@@ -25,17 +33,19 @@ function Messenger () {
 				newChats.push(doc.data());
 			})
 			setChats(newChats);
-		})
-
+			setIsLoading(false);
+		});
+		
 		return unsubscribe;
-	}, [currentUser.uid]);
+	}, [currentUser]);
 
-	return (
+	return (	
+
 		<div className="messenger-container">
-			<Button onClick={signOutUser}>Sign Out</Button>
-			<Sidebar groups={chats} setSelectedChat={setSelectedChat}/>
+				{/* <Button onClick={signOutUser}>Sign Out</Button> */}
+				<Sidebar groups={chats}/>
+				<Chat chat={selectedChatData} />
 		</div>
-
 	);
 }
 

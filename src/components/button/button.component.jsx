@@ -1,8 +1,13 @@
 import "./button.styles.scss";
 
-function Button ({ children, ...otherProps }) {
+const BUTTON_TYPES = {
+	rounded: 'rounded',
+	invisible: 'invisible'
+}
+
+function Button ({ children, buttonType, ...otherProps }) {
 	return (
-		<button {...otherProps}> { children } </button>
+		<button className={`button-container ${BUTTON_TYPES[buttonType]}`}{...otherProps}> { children } </button>
 	)
 }
 

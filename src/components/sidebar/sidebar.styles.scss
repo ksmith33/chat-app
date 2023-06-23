@@ -1,7 +1,30 @@
 .sidebar-container {
 	width: 23.5em;
-	height: 40em;
 	overflow: auto;
-	background-color: #93BFCF;
-	border-radius: 20px;
+	background-color: #041C32;
+	color: white;
+	display: flex;
+	flex-direction: column;
+
+	Button{
+		margin: .3em;
+	}
+}
+
+.new-conversation{
+	display: flex;
+
+
+	&:hover{
+		background-color: white;
+		color: black;
+		cursor: pointer;	
+
+		Button{
+			color: white;
+			background-color: black;
+		}
+	}
+
+
 }

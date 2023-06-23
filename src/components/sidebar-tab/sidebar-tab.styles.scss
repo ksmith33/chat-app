@@ -3,11 +3,13 @@
 	height: 100%;
 	text-align: center;
 	&:hover{
-		background-color: #6096B4;
+		background-color: #ffffff;
 		cursor: pointer;
+		color: black;
 	}
 
 	&.selected{
-		background-color: #6096B4;
+		background-color: #ffffff;
+		color: black;
 	}
 }

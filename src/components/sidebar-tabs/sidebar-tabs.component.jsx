@@ -13,7 +13,7 @@ function SidebarTabs ({ selectedTab, setSelectedTab, tabs}) {
 				tabs.map((tab, index) => {
 					const { name } = tab;
 					return(
-						<SidebarTab key= {tab.id} name={ name } onClick={(e) => handleTabClick(index)} selected={index === selectedTab}/>
+						<SidebarTab key= {tab.id} name={ name } onClick={() => handleTabClick(index)} selected={index === selectedTab}/>
 					)
 				})
 			}

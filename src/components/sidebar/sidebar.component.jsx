@@ -1,39 +1,57 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './sidebar.styles.scss';
 import SidebarTabs from '../sidebar-tabs/sidebar-tabs.component';
 import SidebarGroups from '../sidebar-groups/sidebar-groups.component';
+import { ChatContext } from '../../contexts/chat.context';
+import Button from '../button/button.component';
+import { useNavigate } from 'react-router-dom';
 
 const sidebarTabs = [
 	{
 		id: 1,
 		name: "All",
-		groupType: null
+		groupType: null,
+		handleButtonClick: () => {}
 	},
 	{
 		id: 2,
 		name: "Groups",
 		//changeMaybe
-		groupType: 1
+		groupType: 1,
+		handleButtonClick: (navigate) => {
+			navigate('/add-group');
+		}
 	},
 	{
 		id: 3,
 		name: "Dms",
-		groupType: 2
+		groupType: 2,
+		handleButtonClick: (navigate) => {
+
+		}
 	}
 ]
 
 function Sidebar ({ groups }) {
 	const [selectedTab, setSelectedTab] = useState(0);
- 	const filteredGroups = sidebarTabs[selectedTab].groupType ? groups.filter((group) => {
-		return group.type === sidebarTabs[selectedTab].groupType;
+	const groupType = sidebarTabs[selectedTab].groupType;
+	const navigate = useNavigate();
+
+	//rename to selectedGroup
+ 	const filteredGroups = groupType ? groups.filter((group) => {
+		return group.type === groupType;
 	}) : groups; 
 	//need all the users groups
-	//state value to filter which of users groups we currently see
 	return(
 		<div className='sidebar-container'>
-			//move props to new lines
-			<SidebarTabs selectedTab={ selectedTab } setSelectedTab={ setSelectedTab } tabs={ sidebarTabs }/>
+			<SidebarTabs 
+				selectedTab={ selectedTab } 
+				setSelectedTab={ setSelectedTab } 
+				tabs={ sidebarTabs }
+			/>
+
 			<SidebarGroups groups={ filteredGroups } />
+			
 		</div>
 	)
 }
