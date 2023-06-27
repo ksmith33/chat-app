@@ -7,15 +7,16 @@ import { ChatContext } from "../../contexts/chat.context";
 function SidebarGroups({ groups }){
 	const { selectedChat, setSelectedChat } = useContext(ChatContext);
 
-	function handleClick (index){
-		setSelectedChat(index);
+	function handleClick (id){
+		setSelectedChat(id);
 	}
 
 	return (
 		<div className="sidebar-groups-container">
 			{
-				groups && groups.map((group, index) => {
-					return <SidebarGroup group={ group } key={group.id} onClick={() => handleClick(index)} selected={index === selectedChat}/>
+				groups && groups.map((group) => {
+					const {id} = group;
+					return <SidebarGroup group={ group } key={group.id} onClick={() => handleClick(id)} selected={id === selectedChat}/>
 				})
 			}		
 		</div>

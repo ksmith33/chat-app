@@ -3,6 +3,7 @@ import './sidebar-group.styles.scss';
 function SidebarGroup ({ group, onClick, selected}){
 	const {name, recentMessage} = group;
 	const { messageText, sentAt, sentBy } = recentMessage;
+	const timeStamp = new Intl.DateTimeFormat('en-US', {month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'}).format(sentAt.toDate());
 
 	return (
 		//button?
@@ -11,7 +12,7 @@ function SidebarGroup ({ group, onClick, selected}){
 			<div className="recent-message">
 				<div className='message-header'>
 					<h3>{ sentBy }</h3>
-					<h3>{ new Intl.DateTimeFormat('en-US', {hour: '2-digit', minute: '2-digit'}).format(sentAt) } </h3>
+					<h3>{ timeStamp } </h3>
 				</div>
 				<span>{ messageText }</span>
 			</div>

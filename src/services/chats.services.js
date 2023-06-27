@@ -1,6 +1,7 @@
-import { getDoc, doc, getDocs, query, collection, where} from "firebase/firestore"
+import { setDoc, doc, getDocs, query, collection, where, updateDoc, addDoc} from "firebase/firestore"
 import { auth, db } from "../utils/firebase/firebase.utils"
 
+//maybe just put all firebase database interactions into one file
 export const getUserChats = async (uid) => {
 	const groupsRef = collection(db, 'groups');
 	const q = query(groupsRef, where("members", "array-contains", uid));
@@ -18,4 +19,19 @@ export const getMessages = async (chatId) => {
 	}, []);
 
 	return messagesArray;
+}
+
+export const sendMessage = async (groupId, data) => {
+	const docRef = doc(collection(db, "groups", groupId, "messages"));
+	await setDoc(docRef, {
+		...data,
+		id: docRef.id
+	});
+	const groupDocRef = doc(db, "groups", groupId);
+	const {sentAt} = data;
+
+	await updateDoc(groupDocRef, {
+		modifiedAt: sentAt,
+		recentMessage: data
+	});
 }

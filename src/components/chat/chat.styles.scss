@@ -1,0 +1,20 @@
+.chat-container{
+	display: flex;
+	flex-direction: column;
+	//might need to change
+	.form {
+		display: flex;
+		align-items: center;
+	}
+
+	//not feeling this
+	.chat-header{
+		background-color: #041C32;
+		color: white;
+		height: 4.49em;
+		padding: 0em 1em;
+		display: flex;
+		align-items: center;
+	}
+}
+
