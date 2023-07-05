@@ -34,9 +34,9 @@ function Messenger () {
 
 	return (	
 		<div className="messenger-container">
-				{/* <Button onClick={signOutUser}>Sign Out</Button> */}
+				<Button onClick={signOutUser}>Sign Out</Button> 
 				<Sidebar groups={chats}/>
-				{ selectedChat ?
+				{ selectedChatData ?
 					(<Chat selectedChat={selectedChatData} />) : 
 					//make a component
 					(<h1> Select a chat to begin chatting</h1>)
