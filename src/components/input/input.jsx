@@ -5,6 +5,8 @@ import { useState, useContext } from 'react';
 import { UserContext } from '../../contexts/user.context';
 import { BsFillSendFill, BsPlusCircleFill } from 'react-icons/bs';
 import { Timestamp } from 'firebase/firestore';
+import { storage } from '../../utils/firebase/firebase.utils';
+import { getDownloadURL, uploadBytes, ref } from 'firebase/storage';
 
 function Input ({id}) {
 	const [newMessage, setNewMessage] = useState("");
@@ -20,10 +22,25 @@ function Input ({id}) {
 		setNewImage(event.target.files[0]);
 	}
 
-	function handleSubmit (event) {
+	async function handleSubmit (event) {
 		event.preventDefault();
-		//doesn't work. fix
-		sendMessage(id, {messageText: newMessage, image: newImage, sentAt: Timestamp.now(), sentBy: {displayName, uid}});
+		if(newImage) {
+			console.log(newImage);
+			const imageRef = ref(storage, newImage.name);
+			uploadBytes(imageRef, newImage).then(
+				(snapshot) => {
+					getDownloadURL(snapshot.ref).then(async (downloadUrl) => {
+						await sendMessage(id, {messageText: newMessage, image: downloadUrl, sentAt: Timestamp.now(), sentBy: {displayName, uid}});
+					});
+				},
+				(error) => {
+					console.log(error);
+				}
+			);
+		}else{
+			await sendMessage(id, {messageText: newMessage, sentAt: Timestamp.now(), sentBy: {displayName, uid}});
+		}
+
 		resetInput();
 	}
 
@@ -32,6 +49,7 @@ function Input ({id}) {
 		setNewImage(null);
 	}
 
+	//maybe allow sending files too
 	return(
 		<div className='input-container'>
 			<form onSubmit={handleSubmit} className='form'>
@@ -41,7 +59,7 @@ function Input ({id}) {
 					type = "file"
 					onChange = {handleImageChange}	
 					name = 'image'
-					accept="image/png, image/jpeg"
+					accept="image/*"
 				/>
 
 				<label htmlFor='image-upload'>

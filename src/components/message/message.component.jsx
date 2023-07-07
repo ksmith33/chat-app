@@ -10,11 +10,12 @@ function Message ({ message }) {
 	const timestamp = new Intl.DateTimeFormat('en-US', {month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'}).format(sentAt.toDate());
 	const isSender = uid === currentUser.uid;
 //what semantic tag instead of span
+//fix invisible display name
 	return (
 		<div className={`message-container ${isSender ? 'sent' : ''}`}>
 			<div className='message-content'>
 				<span className='sender'>{displayName}</span>
-				<div className='message-text'>
+				<div className='message-body'>
 					<p>{messageText}</p>
 					{image && <img src={image} alt="" />}
 					<span className='timestamp'>{timestamp}</span>

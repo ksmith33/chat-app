@@ -1,11 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 import './chat.styles.scss';
 import MessageArea from '../message-area/message-area.component';
-import { sendMessage } from '../../services/chats.services';
 import Input from '../input/input';
 import { collection, onSnapshot, Timestamp, orderBy, query } from 'firebase/firestore';
 import { db } from '../../utils/firebase/firebase.utils';
-import { UserContext } from '../../contexts/user.context';
 
 
 //might switch back to store id or storing state in messenger
