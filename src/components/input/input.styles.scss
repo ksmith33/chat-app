@@ -12,6 +12,7 @@
 			cursor: pointer;
 		}
 	}
+	
 }
 
 .message-box {
@@ -23,7 +24,13 @@
 }
 
 .image-upload {
+	width: 9em;
+}
+
+input::file-selector-button{
 	opacity: 0;
 	z-index: -1;
 	position: absolute;
 }
+
+//if u don't have to nest then don't

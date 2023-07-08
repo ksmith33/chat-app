@@ -37,7 +37,8 @@ function Messenger () {
 				<Button onClick={signOutUser}>Sign Out</Button> 
 				<Sidebar groups={chats}/>
 				{ selectedChatData ?
-					(<Chat selectedChat={selectedChatData} />) : 
+				//how to get attached image to stay?
+					(<Chat selectedChat={selectedChatData} key={selectedChat}/>) : 
 					//make a component
 					(<h1> Select a chat to begin chatting</h1>)
 				}
