@@ -8,7 +8,7 @@ function SidebarGroup ({ group, onClick, selected}){
 
 	return (
 		//button?
-		<div className= {`sidebar-group-container ${selected ? "selected" : ""}`}onClick={onClick}>
+		<div className= {`sidebar-group-container ${selected ? "selected" : ""}`} onClick={onClick}>
 			<h2>{ name } </h2>
 			<div className="recent-message">
 				<div className='message-header'>

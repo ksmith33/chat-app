@@ -11,6 +11,8 @@ function SidebarGroups({ groups }){
 		setSelectedChat(id);
 	}
 
+	//move fetching groups here
+
 	return (
 		<div className="sidebar-groups-container">
 			{

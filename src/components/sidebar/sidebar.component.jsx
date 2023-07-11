@@ -11,31 +11,23 @@ const sidebarTabs = [
 		id: 1,
 		name: "All",
 		groupType: null,
-		handleButtonClick: () => {}
 	},
 	{
 		id: 2,
 		name: "Groups",
 		//changeMaybe
 		groupType: 1,
-		handleButtonClick: (navigate) => {
-			navigate('/add-group');
-		}
 	},
 	{
 		id: 3,
 		name: "Dms",
 		groupType: 2,
-		handleButtonClick: (navigate) => {
-
-		}
 	}
 ]
 
 function Sidebar ({ groups }) {
 	const [selectedTab, setSelectedTab] = useState(0);
 	const groupType = sidebarTabs[selectedTab].groupType;
-	const navigate = useNavigate();
 
 	//rename to selectedGroup
  	const filteredGroups = groupType ? groups.filter((group) => {
@@ -51,7 +43,6 @@ function Sidebar ({ groups }) {
 			/>
 
 			<SidebarGroups groups={ filteredGroups } />
-			
 		</div>
 	)
 }

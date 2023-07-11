@@ -4,7 +4,7 @@ function ProtectedRoute ({ isLoggedIn, isLoading, children }) {
 	if( isLoading ) return null;
 
 	if( !isLoggedIn ){
-		return <Navigate to="auth" />
+		return <Navigate to="/auth" />
 	}
 
 	return children;

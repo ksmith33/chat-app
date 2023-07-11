@@ -21,12 +21,22 @@ export const getMessages = async (chatId) => {
 	return messagesArray;
 }
 
+export const createChat = async (data) => {
+	const groupRef = doc(collection(db, "groups"));
+	await setDoc(groupRef, {
+		...data,
+		id: groupRef.id
+	});
+}
+
 export const sendMessage = async (groupId, data) => {
+	//probably could optimize
 	const docRef = doc(collection(db, "groups", groupId, "messages"));
 	await setDoc(docRef, {
 		...data,
 		id: docRef.id
 	});
+	
 	const groupDocRef = doc(db, "groups", groupId);
 	const {sentAt} = data;
 

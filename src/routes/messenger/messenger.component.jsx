@@ -34,14 +34,14 @@ function Messenger () {
 
 	return (	
 		<div className="messenger-container">
-				<Button onClick={signOutUser}>Sign Out</Button> 
-				<Sidebar groups={chats}/>
-				{ selectedChatData ?
-				//how to get attached image to stay?
-					(<Chat selectedChat={selectedChatData} key={selectedChat}/>) : 
-					//make a component
-					(<h1> Select a chat to begin chatting</h1>)
-				}
+			<Button onClick={signOutUser}>Sign Out</Button> 
+			<Sidebar groups={chats}/>
+			{ selectedChatData ?
+			//how to get attached image to stay?
+				(<Chat selectedChat={selectedChatData} key={selectedChat}/>) : 
+				//make a component
+				(<h1> Select a chat to begin chatting</h1>)
+			}
 		</div>
 	);
 }

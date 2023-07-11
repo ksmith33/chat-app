@@ -37,7 +37,6 @@ function Chat ({ selectedChat }) {
 			<MessageArea messages={messages}/>
 			{/*could move into input component*/}
 			<Input id={id}/>
-
 		</div>
 		
 	)

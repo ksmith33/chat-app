@@ -6,14 +6,13 @@
 	display: flex;
 	flex-direction: column;
 
-	Button{
+	Button {
 		margin: .3em;
 	}
 }
 
-.new-conversation{
+.new-conversation {
 	display: flex;
-
 
 	&:hover{
 		background-color: white;

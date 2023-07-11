@@ -5,6 +5,7 @@ import './App.scss';
 import ProtectedRoute from "./routes/protected-route/protected-route.component";
 import { useContext } from "react";
 import { UserContext } from "./contexts/user.context";
+import CreateChat from "./routes/create-group/create-group.component";
 
 function App() {
 	const { currentUser, loading } = useContext(UserContext);
@@ -16,6 +17,14 @@ function App() {
 				element= {
 					<ProtectedRoute isLoggedIn={ currentUser } isLoading={ loading }>
 						<Messenger />
+					</ProtectedRoute>
+				}
+			/>
+			<Route 
+				path='/create-chat' 
+				element= {
+					<ProtectedRoute isLoggedIn={ currentUser } isLoading={ loading }>
+						<CreateChat />
 					</ProtectedRoute>
 				}
 			/>
