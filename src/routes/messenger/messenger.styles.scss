@@ -1,4 +1,9 @@
 .messenger-container {
 	display: flex;
-	height: inherit;
+	height: 100%;
+}
+
+.content {
+	width:60em;
+	height: 100%;
 }

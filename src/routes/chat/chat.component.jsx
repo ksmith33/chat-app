@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './chat.styles.scss';
-import MessageArea from '../message-area/message-area.component';
-import Input from '../input/input';
+import MessageArea from '../../components/message-area/message-area.component';
+import Input from '../../components/input/input';
 import { collection, onSnapshot, Timestamp, orderBy, query } from 'firebase/firestore';
 import { db } from '../../utils/firebase/firebase.utils';
-
+import ChatHeader from '../../components/chat-header/chat-header.component';
 
 //might switch back to store id or storing state in messenger
 function Chat ({ selectedChat }) {
@@ -29,11 +29,10 @@ function Chat ({ selectedChat }) {
 
 	}, [id]);
 
+	//could make chat-header more general in order to use it to double ass add group
 	return(
 		<div className='chat-container'>
-			<div className='chat-header'>
-				<h1>{name}</h1>
-			</div>
+			<ChatHeader name={name} id={id}/>
 			<MessageArea messages={messages}/>
 			{/*could move into input component*/}
 			<Input id={id}/>

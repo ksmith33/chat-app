@@ -21,11 +21,19 @@ export const getMessages = async (chatId) => {
 	return messagesArray;
 }
 
+//fix so that can't create chat with users that already exist
 export const createChat = async (data) => {
 	const groupRef = doc(collection(db, "groups"));
 	await setDoc(groupRef, {
 		...data,
-		id: groupRef.id
+		id: groupRef.id,
+	});
+}
+
+export const updateChat = async (groupId, data) => {
+	const groupDocRef = doc(db, 'groups', groupId);
+	await updateDoc(groupDocRef, {
+		...data
 	});
 }
 
@@ -36,12 +44,9 @@ export const sendMessage = async (groupId, data) => {
 		...data,
 		id: docRef.id
 	});
-	
-	const groupDocRef = doc(db, "groups", groupId);
-	const {sentAt} = data;
 
-	await updateDoc(groupDocRef, {
-		modifiedAt: sentAt,
-		recentMessage: data
-	});
+	const {sentAt} = data;
+	updateChat(groupId, {modifiedAt: sentAt, recentMessage: data});
 }
+
+

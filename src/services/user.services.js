@@ -51,7 +51,7 @@ export const isDnAvailable = async (displayName) => {
 
 	return true;
 }
-
+//maybe filter self out here
 export const findUser = async (displayName) => {
 	const usersRef = collection(db, 'users');
 	const q = query(usersRef, where("displayName", ">=", displayName), where("displayName", "<=", displayName+ '\uf8ff'));

@@ -18,8 +18,9 @@
 
 	&.invisible{
 		background-color: transparent;
-		font-size: 2rem;
+		font-size: 1.5rem;
 		color: white;
+		margin: 0em .5em;
 		&:hover {
 			cursor: pointer;
 		}

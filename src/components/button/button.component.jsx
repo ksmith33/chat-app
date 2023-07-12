@@ -1,7 +1,8 @@
 import "./button.styles.scss";
 
 const BUTTON_TYPES = {
-	chat: 'chat'
+	chat: 'chat',
+	invisible: 'invisible'
 }
 
 function Button ({ children, buttonType, ...otherProps }) {

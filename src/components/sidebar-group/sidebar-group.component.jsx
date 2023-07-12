@@ -2,9 +2,9 @@ import './sidebar-group.styles.scss';
 
 function SidebarGroup ({ group, onClick, selected}){
 	const {name, recentMessage} = group;
-	const { messageText, sentAt, sentBy } = recentMessage;
-	const { displayName } = sentBy;
-	const timeStamp = new Intl.DateTimeFormat('en-US', {month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'}).format(sentAt.toDate());
+	const { messageText, sentAt, sentBy } = recentMessage ?? "";
+	const { displayName } = sentBy ?? "";
+	const timeStamp = sentAt ? new Intl.DateTimeFormat('en-US', {month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'}).format(sentAt.toDate()) : "";
 
 	return (
 		//button?

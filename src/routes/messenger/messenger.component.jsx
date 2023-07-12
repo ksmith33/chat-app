@@ -1,14 +1,15 @@
 import Button from "../../components/button/button.component";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import Sidebar from "../../components/sidebar/sidebar.component";
-import { getUserChats } from "../../services/chats.services";
 import { useContext, useEffect, useState } from "react";
 import "./messenger.styles.scss";
 import { UserContext } from "../../contexts/user.context";
 import { onSnapshot, collection, query, where, orderBy} from "firebase/firestore";
 import { db } from "../../utils/firebase/firebase.utils";
-import Chat from "../../components/chat/chat.component";
+import Chat from "../chat/chat.component";
 import { ChatContext } from "../../contexts/chat.context";
+import { Route, Routes } from "react-router-dom";
+import CreateChat from "../create-group/create-group.component";
 
 function Messenger () {
 	const [chats, setChats] = useState([]);
@@ -36,12 +37,19 @@ function Messenger () {
 		<div className="messenger-container">
 			<Button onClick={signOutUser}>Sign Out</Button> 
 			<Sidebar groups={chats}/>
-			{ selectedChatData ?
-			//how to get attached image to stay?
-				(<Chat selectedChat={selectedChatData} key={selectedChat}/>) : 
-				//make a component
-				(<h1> Select a chat to begin chatting</h1>)
-			}
+			<div className="content">
+				<Routes>
+					<Route 
+						index element = {selectedChatData ?
+					//how to get attached image to stay?
+						(<Chat selectedChat={selectedChatData} key={selectedChat}/>) : 
+						//make a component
+						(<h1> Select a chat to begin chatting</h1>)}
+					/>
+					<Route path = '/new' element={<CreateChat />} />
+				</Routes>
+			</div>
+			
 		</div>
 	);
 }
