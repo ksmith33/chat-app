@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Messenger from "./routes/messenger/messenger.component";
 import './App.scss';
 import ProtectedRoute from "./routes/protected-route/protected-route.component";
-import { useContext } from "react";
+import { useContext, useState, useEffect} from "react";
 import { UserContext } from "./contexts/user.context";
 
 function App() {

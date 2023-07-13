@@ -49,7 +49,6 @@ function Messenger () {
 					<Route path = '/new' element={<CreateChat />} />
 				</Routes>
 			</div>
-			
 		</div>
 	);
 }

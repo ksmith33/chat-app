@@ -8,22 +8,8 @@
 
 	Button {
 		margin: .3em;
+		align-self: flex-end;
+		position: sticky;
+		transform: translateY(2.7em);
 	}
-}
-
-.new-conversation {
-	display: flex;
-
-	&:hover{
-		background-color: white;
-		color: black;
-		cursor: pointer;	
-
-		Button{
-			color: white;
-			background-color: black;
-		}
-	}
-
-
 }

@@ -2,9 +2,9 @@ import { useContext, useState } from 'react';
 import './sidebar.styles.scss';
 import SidebarTabs from '../sidebar-tabs/sidebar-tabs.component';
 import SidebarGroups from '../sidebar-groups/sidebar-groups.component';
-import { ChatContext } from '../../contexts/chat.context';
 import Button from '../button/button.component';
-import { useNavigate } from 'react-router-dom';
+import {BiSolidMessageAdd} from 'react-icons/bi'
+import { useNavigate, useParams } from 'react-router-dom';
 
 const sidebarTabs = [
 	{
@@ -27,8 +27,12 @@ const sidebarTabs = [
 
 function Sidebar ({ groups }) {
 	const [selectedTab, setSelectedTab] = useState(0);
+	const navigate = useNavigate();
 	const groupType = sidebarTabs[selectedTab].groupType;
 
+	function handleClick () {
+		navigate('/new');
+	}
 	//rename to selectedGroup
  	const filteredGroups = groupType ? groups.filter((group) => {
 		return group.type === groupType;
@@ -41,8 +45,8 @@ function Sidebar ({ groups }) {
 				setSelectedTab={ setSelectedTab } 
 				tabs={ sidebarTabs }
 			/>
-
 			<SidebarGroups groups={ filteredGroups } />
+			<Button buttonType='rounded' type='button' onClick={handleClick}><BiSolidMessageAdd /></Button>
 		</div>
 	)
 }
