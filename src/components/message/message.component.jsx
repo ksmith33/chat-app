@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useRef, useEffect } from 'react';
 import './message.styles.scss';
 import { UserContext } from '../../contexts/user.context';
 
@@ -11,8 +11,17 @@ function Message ({ message }) {
 	const isSender = uid === currentUser.uid;
 //what semantic tag instead of span
 //fix invisible display name
+//find some way to account for image popping in
+	const messageRef = useRef();
+
+	useEffect(() => {
+		window.requestAnimationFrame(() => messageRef.current?.scrollIntoView({
+			behavior: 'smooth'
+		}));
+	}, []);
+
 	return (
-		<div className={`message-container ${isSender ? 'sent' : ''}`}>
+		<div className={`message-container ${isSender ? 'sent' : ''}`} ref={messageRef}>
 			<div className='message-content'>
 				<span className='sender'>{displayName}</span>
 				<div className='message-body'>

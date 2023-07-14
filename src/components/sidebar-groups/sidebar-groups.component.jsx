@@ -10,7 +10,6 @@ function SidebarGroups({ groups }){
 	function handleClick (id){
 		setSelectedChat(id);
 	}
-
 	//move fetching groups here
 
 	return (
@@ -18,7 +17,7 @@ function SidebarGroups({ groups }){
 			{
 				groups && groups.map((group) => {
 					const {id} = group;
-					return <SidebarGroup group={ group } key={group.id} onClick={() => handleClick(id)} selected={id === selectedChat}/>
+					return <SidebarGroup group={ group } key={group.id} onClick={handleClick} selected={id === selectedChat}/>
 				})
 			}		
 		</div>

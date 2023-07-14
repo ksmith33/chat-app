@@ -24,6 +24,7 @@ const sidebarTabs = [
 		groupType: 2,
 	}
 ]
+//fix add group button
 
 function Sidebar ({ groups }) {
 	const [selectedTab, setSelectedTab] = useState(0);

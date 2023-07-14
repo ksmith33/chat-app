@@ -1,14 +1,14 @@
 import './sidebar-group.styles.scss';
 
 function SidebarGroup ({ group, onClick, selected}){
-	const {name, recentMessage} = group;
+	const {name, recentMessage, id} = group;
 	const { messageText, sentAt, sentBy } = recentMessage ?? "";
 	const { displayName } = sentBy ?? "";
 	const timeStamp = sentAt ? new Intl.DateTimeFormat('en-US', {month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'}).format(sentAt.toDate()) : "";
 
 	return (
 		//button?
-		<div className= {`sidebar-group-container ${selected ? "selected" : ""}`} onClick={onClick}>
+		<div className= {`sidebar-group-container ${selected ? "selected" : ""}`} onClick={() => onClick(id)}>
 			<h2>{ name } </h2>
 			<div className="recent-message">
 				<div className='message-header'>

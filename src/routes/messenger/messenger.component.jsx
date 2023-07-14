@@ -1,37 +1,25 @@
 import Button from "../../components/button/button.component";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import Sidebar from "../../components/sidebar/sidebar.component";
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import "./messenger.styles.scss";
 import { UserContext } from "../../contexts/user.context";
-import { onSnapshot, collection, query, where, orderBy} from "firebase/firestore";
+import {collection, where, orderBy} from "firebase/firestore";
 import { db } from "../../utils/firebase/firebase.utils";
 import Chat from "../chat/chat.component";
 import { ChatContext } from "../../contexts/chat.context";
 import { Route, Routes } from "react-router-dom";
 import CreateChat from "../create-group/create-group.component";
+import useSnapshot from '../../hooks/useSnapshot';
 
 function Messenger () {
-	const [chats, setChats] = useState([]);
 	const { currentUser } = useContext(UserContext);
+	const {uid} = currentUser;
+	const chats = useSnapshot(collection(db, 'groups'), [where("members", "array-contains", uid), orderBy("modifiedAt", "desc")])
+	
+	
 	const { selectedChat } = useContext(ChatContext);
 	const selectedChatData = chats.find(chat => chat.id === selectedChat);
-
-	useEffect(() => {
-		//might move into own method
-		const { uid } = currentUser;
-		const groupsRef = collection(db, 'groups');
-		const q = query(groupsRef, where("members", "array-contains", uid), orderBy("modifiedAt", "desc"));
-		const unsubscribe = onSnapshot(q, querySnapshot => {
-			const newChats = [];
-			querySnapshot.forEach((doc) => {
-				newChats.push(doc.data());
-			})
-			setChats(newChats);
-		});
-		
-		return unsubscribe;
-	}, [currentUser]);
 
 	return (	
 		<div className="messenger-container">

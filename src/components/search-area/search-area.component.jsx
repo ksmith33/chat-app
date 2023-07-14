@@ -18,12 +18,16 @@ function SearchArea ({setMembers, members}) {
 
 	}, [searchTerm]);
 
+	function handleSearchChange (event) {
+		setSearchTerm(event.target.value);
+	}
+
 	//do something about self popping up
 	return(
-		<>
-			<SearchBar handleChange={(event) => setSearchTerm(event.target.value)} searchTerm={searchTerm}/>
+		<div className='search-container'>
+			<SearchBar handleChange={handleSearchChange} searchTerm={searchTerm}/>
 			<SearchResults searchResults={searchResults} setMembers={setMembers} members={members}/>
-		</>
+		</div>
 	)
 
 }

@@ -1,6 +1,5 @@
 import Message from '../message/message.component';
 import './message-area.styles.scss';
-
 function MessageArea ({messages}) {
 	//Message Component
 	//styling based on sender

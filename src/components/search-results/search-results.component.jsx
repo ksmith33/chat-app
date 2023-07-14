@@ -1,3 +1,4 @@
+import ListItem from '../list-item/list-item';
 import './search-results.styles.scss';
 
 function SearchResults ({searchResults, setMembers, members}){
@@ -13,7 +14,7 @@ function SearchResults ({searchResults, setMembers, members}){
 				searchResults.map(searchResult => {
 					if(members[0].uid !== searchResult.uid){
 						return(
-							<div onClick={() => handleClick(searchResult)}>{searchResult.displayName}</div>
+							<ListItem item={searchResult} onClick={handleClick}/>
 						)
 					}
 				})
