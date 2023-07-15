@@ -1,6 +1,5 @@
 import './search-bar.styles.scss';
 function SearchBar ({handleChange, searchTerm}) {
-
 	return (
 		<input
 			className='search-bar'
