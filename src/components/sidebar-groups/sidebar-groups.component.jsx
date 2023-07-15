@@ -15,7 +15,7 @@ function SidebarGroups({ groups }){
 	return (
 		<div className="sidebar-groups-container">
 			{
-				groups && groups.map((group) => {
+				groups.map((group) => {
 					const {id} = group;
 					return <SidebarGroup group={ group } key={group.id} onClick={handleClick} selected={id === selectedChat}/>
 				})

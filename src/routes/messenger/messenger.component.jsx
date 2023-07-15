@@ -1,7 +1,7 @@
 import Button from "../../components/button/button.component";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import Sidebar from "../../components/sidebar/sidebar.component";
-import { useContext} from "react";
+import { useContext, useEffect} from "react";
 import "./messenger.styles.scss";
 import { UserContext } from "../../contexts/user.context";
 import {collection, where, orderBy} from "firebase/firestore";
@@ -13,11 +13,8 @@ import CreateChat from "../create-group/create-group.component";
 import useSnapshot from '../../hooks/useSnapshot';
 
 function Messenger () {
-	const { currentUser } = useContext(UserContext);
-	const {uid} = currentUser;
-	const chats = useSnapshot(collection(db, 'groups'), [where("members", "array-contains", uid), orderBy("modifiedAt", "desc")])
-	
-	
+	const { currentUser:{uid} } = useContext(UserContext);
+	const chats = useSnapshot(collection(db, 'groups'), [where("members", "array-contains", uid), orderBy("modifiedAt", "desc")]);
 	const { selectedChat } = useContext(ChatContext);
 	const selectedChatData = chats.find(chat => chat.id === selectedChat);
 

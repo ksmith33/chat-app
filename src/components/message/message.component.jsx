@@ -4,8 +4,15 @@ import { UserContext } from '../../contexts/user.context';
 
 function Message ({ message }) {
 	//will need user id in the case of users with same name
-	const { sentBy, messageText, sentAt, image } = message;
-	const {displayName, uid} = sentBy;
+	const { 
+		sentBy: {
+			displayName,
+			uid
+		}, 
+		messageText, 
+		sentAt, 
+		image 
+	} = message;
 	const { currentUser } = useContext(UserContext);
 	const timestamp = new Intl.DateTimeFormat('en-US', {month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'}).format(sentAt.toDate());
 	const isSender = uid === currentUser.uid;

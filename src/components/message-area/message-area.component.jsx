@@ -5,7 +5,7 @@ function MessageArea ({messages}) {
 	//styling based on sender
 	return (
 		<div className='message-area-container'>
-			{messages && messages.map(message => 
+			{messages.map(message => 
 				{
 					return(
 						<Message message={message} key={message.id}/>

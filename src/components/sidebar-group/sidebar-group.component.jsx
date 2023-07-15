@@ -1,9 +1,17 @@
 import './sidebar-group.styles.scss';
 
 function SidebarGroup ({ group, onClick, selected}){
-	const {name, recentMessage, id} = group;
-	const { messageText, sentAt, sentBy } = recentMessage ?? "";
-	const { displayName } = sentBy ?? "";
+	const {
+					name, 
+					recentMessage : {
+						messageText, 
+						sentAt, 
+						sentBy: {
+							displayName
+						} = ''
+					} = '', 
+					id
+				} = group;
 	const timeStamp = sentAt ? new Intl.DateTimeFormat('en-US', {month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'}).format(sentAt.toDate()) : "";
 
 	return (

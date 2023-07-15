@@ -5,6 +5,7 @@ import ChatHeader from '../../components/chat-header/chat-header.component';
 import useSnapshot from '../../hooks/useSnapshot';
 import { collection, orderBy } from 'firebase/firestore';
 import { db } from '../../utils/firebase/firebase.utils';
+import { useEffect } from 'react';
 
 //might switch back to store id or storing state in messenger
 function Chat ({ selectedChat }) {

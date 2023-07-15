@@ -10,7 +10,7 @@ function GroupMembers ({members, setMembers, userId}) {
 
 	return (
 		<div className="members-container">
-			{members && members.map(
+			{members.map(
 				member => {
 					return <ListItem item = {member} onClick={handleClick}/>
 				}
