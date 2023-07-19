@@ -10,8 +10,13 @@ function SearchArea ({setMembers, members}) {
 
 	useEffect (() => {
 		const delayDebounceFn = setTimeout(async () => {
-			if(!searchTerm) return
-      setSearchResults(await findUser(searchTerm.toLowerCase()));
+			const results = await findUser(searchTerm.toLowerCase());
+			const filteredResults = results.filter(result => {
+				return !members.find(member => {
+					return result.uid === member.uid
+				});
+			});
+      setSearchResults(filteredResults);
     }, 500)
 
     return () => clearTimeout(delayDebounceFn)

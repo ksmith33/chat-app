@@ -1,6 +1,11 @@
 import Message from '../message/message.component';
 import './message-area.styles.scss';
-function MessageArea ({messages}) {
+import useSnapshot from '../../hooks/useSnapshot';
+import { collection, orderBy } from 'firebase/firestore';
+import { db } from '../../utils/firebase/firebase.utils';
+
+function MessageArea ({id}) {
+	const messages = useSnapshot(collection(db, "groups", id, 'messages'), [orderBy("sentAt", "asc")]);
 	//Message Component
 	//styling based on sender
 	return (

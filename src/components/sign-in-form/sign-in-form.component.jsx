@@ -9,7 +9,7 @@ function SignInForm () {
 	async function handleGoogleSignIn(){
 		try{
 			await signInWithGooglePopup();
-			navigate("/messenger");
+			navigate("/");
 		}catch(error){
 			console.log(error);
 		}

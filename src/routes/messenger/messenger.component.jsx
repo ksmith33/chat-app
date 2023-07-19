@@ -1,7 +1,8 @@
 import Button from "../../components/button/button.component";
+import { ImExit } from 'react-icons/im';
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 import Sidebar from "../../components/sidebar/sidebar.component";
-import { useContext, useEffect} from "react";
+import { useContext } from "react";
 import "./messenger.styles.scss";
 import { UserContext } from "../../contexts/user.context";
 import {collection, where, orderBy} from "firebase/firestore";
@@ -20,7 +21,10 @@ function Messenger () {
 
 	return (	
 		<div className="messenger-container">
-			<Button onClick={signOutUser}>Sign Out</Button> 
+			<div className="exit">
+				<Button type='button' buttonType='invisible' onClick={signOutUser}><ImExit/></Button> 
+			</div>
+			
 			<Sidebar groups={chats}/>
 			<div className="content">
 				<Routes>

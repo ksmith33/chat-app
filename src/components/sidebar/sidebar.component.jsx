@@ -46,8 +46,11 @@ function Sidebar ({ groups }) {
 				setSelectedTab={ setSelectedTab } 
 				tabs={ sidebarTabs }
 			/>
-			<SidebarGroups groups={ filteredGroups } />
-			<Button buttonType='rounded' type='button' onClick={handleClick}><BiSolidMessageAdd /></Button>
+			<div className='sidebar-body'>
+				<SidebarGroups groups={ filteredGroups } />
+				<Button buttonType='rounded' type='button' onClick={handleClick}><BiSolidMessageAdd /></Button>
+			</div>
+		
 		</div>
 	)
 }

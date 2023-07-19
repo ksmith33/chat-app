@@ -1,15 +1,22 @@
 .sidebar-container {
 	width: 23.5em;
-	overflow: auto;
+	height: inherit;
 	background-color: #041C32;
 	color: white;
+	overflow: hidden;
 	display: flex;
 	flex-direction: column;
+}
 
+.sidebar-body {
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	
 	Button {
 		margin: .3em;
 		align-self: flex-end;
 		position: absolute;
-		transform: translateY(18em);
+		transform: translateY(16em);
 	}
 }
