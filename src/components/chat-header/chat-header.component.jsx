@@ -34,10 +34,11 @@ function ChatHeader ({ name, id }) {
 					<Button buttonType='invisible' type='submit'><BsCheckLg /></Button>
 				</form>
 			:
-				<>
-					<h1>{name}</h1>
-					<Button buttonType='invisible' type='text' onClick={handleClick}><BsPencil/></Button>
-				</>
+				name &&
+					<>
+						<h1>{name}</h1>
+						<Button buttonType='invisible' type='text' onClick={handleClick}><BsPencil/></Button>
+					</>
 			}
 		</div>
 	)

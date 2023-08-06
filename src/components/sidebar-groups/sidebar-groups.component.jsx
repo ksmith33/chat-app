@@ -2,13 +2,19 @@ import { useContext } from "react";
 import SidebarGroup from "../sidebar-group/sidebar-group.component"
 import './sidebar-groups.styles.scss';
 import { ChatContext } from "../../contexts/chat.context";
+import { useLocation, useNavigate } from "react-router-dom";
 
 //fix naming of props
 function SidebarGroups({ groups }){
 	const { selectedChat, setSelectedChat } = useContext(ChatContext);
+	const navigate = useNavigate();
+	const location = useLocation();
 
 	function handleClick (id){
 		setSelectedChat(id);
+		if(location.pathname !== '/'){
+			navigate('/');
+		}
 	}
 	//move fetching groups here
 

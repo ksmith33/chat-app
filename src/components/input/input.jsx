@@ -28,7 +28,6 @@ function Input ({id}) {
 	async function handleSubmit (event) {
 		event.preventDefault();
 		if(newImage) {
-			console.log(newImage);
 			const imageRef = ref(storage, newImage.name);
 			uploadBytes(imageRef, newImage).then(
 				(snapshot) => {
@@ -69,6 +68,7 @@ function Input ({id}) {
 					name = 'image'
 					accept="image/*"
 					ref = {inputRef}
+					disabled = {!id}
 				/>
 
 				<input
@@ -79,6 +79,7 @@ function Input ({id}) {
 					value = {newMessage}
 					placeholder = 'type a message'
 					required = {!newImage && !newMessage}
+					disabled ={!id}
 				/>
 
 				<Button type='submit' buttonType='chat'><BsFillSendFill /></Button>

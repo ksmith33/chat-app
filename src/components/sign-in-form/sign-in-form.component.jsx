@@ -17,8 +17,9 @@ function SignInForm () {
 
 	return(
 		<div className="sign-in-container">
-			<h1>Sign In</h1>
-			<Button type="button" onClick={ handleGoogleSignIn }> Sign In With Google </Button>
+			<h2>Sign in to ChitChat</h2>
+			<Button type="button" buttonType='default' onClick={ handleGoogleSignIn }> Sign In With Google </Button>
+
 		</div>
 	)
 }

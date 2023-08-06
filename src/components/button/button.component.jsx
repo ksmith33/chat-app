@@ -1,6 +1,7 @@
 import "./button.styles.scss";
 
 const BUTTON_TYPES = {
+	default:'default',
 	chat: 'chat',
 	invisible: 'invisible',
 	rounded: 'rounded'

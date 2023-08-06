@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif, Inter, system-ui, Avenir, Helvetica, Arial;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -9,11 +9,11 @@
 
 body, html {
   margin: 0;
-  display: flex;
-  place-items: center;
-  width: 100%;
-  height: 100%;
+	padding: 0;
+	height: 100%;
 }
+
+
 
 * {
 	box-sizing: border-box;

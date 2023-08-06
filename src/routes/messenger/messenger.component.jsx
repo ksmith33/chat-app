@@ -28,13 +28,7 @@ function Messenger () {
 			<Sidebar groups={chats}/>
 			<div className="content">
 				<Routes>
-					<Route 
-						index element = {selectedChatData ?
-					//how to get attached image to stay?
-						(<Chat selectedChat={selectedChatData} key={selectedChat}/>) : 
-						//make a component
-						(<h1> Select a chat to begin chatting</h1>)}
-					/>
+					<Route index element = {<Chat selectedChat={selectedChatData} key={selectedChat}/>} />
 					<Route path = '/new' element={<CreateChat />} />
 				</Routes>
 			</div>
