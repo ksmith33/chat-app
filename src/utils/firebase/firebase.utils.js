@@ -12,13 +12,13 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-	apiKey: `${import.meta.env.VITE_REACT_APP_API_KEY}`,
-  authDomain: `${import.meta.env.VITE_REACT_APP_AUTH_DOMAIN}`,
-  projectId: `${import.meta.env.VITE_REACT_APP_PROJECT_ID}`,
-  storageBucket: `${import.meta.env.VITE_REACT_APP_STORAGE_BUCKET}`,
-  messagingSenderId: `${import.meta.env.VITE_REACT_APP_MESSAGING_SENDER_ID}`,
-  appId: `${import.meta.env.VITE_REACT_APP_APP_ID}`
-}
+  apiKey: "AIzaSyBb3PuBWbgmIJzarbUw5lD44v_Q6Mr9je0",
+  authDomain: "chat-app-affac.firebaseapp.com",
+  projectId: "chat-app-affac",
+  storageBucket: "chat-app-affac.appspot.com",
+  messagingSenderId: "385619147794",
+  appId: "1:385619147794:web:66952658f53c34817c6ccb"
+};
 
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore();
@@ -35,7 +35,6 @@ export const createUser = async (email, password) => {
 	
 	return await createUserWithEmailAndPassword(auth, email, password);
 }
-
 export const signInWithGooglePopup = async () => signInWithPopup(auth, provider);
 export const signOutUser = async () => signOut(auth);
 export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);

@@ -12,11 +12,11 @@ function SidebarGroups({ groups }){
 
 	function handleClick (id){
 		setSelectedChat(id);
-
 		if(location.pathname !== '/'){
 			navigate('/');
 		}
 	}
+	//move fetching groups here
 
 	return (
 		<div className="sidebar-groups-container">
