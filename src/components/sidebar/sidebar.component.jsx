@@ -41,6 +41,7 @@ function Sidebar ({ groups }) {
 	//need all the users groups
 	return(
 		<div className='sidebar-container'>
+
 			<SidebarTabs 
 				selectedTab={ selectedTab } 
 				setSelectedTab={ setSelectedTab } 
