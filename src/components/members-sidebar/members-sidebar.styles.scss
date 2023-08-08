@@ -1,0 +1,24 @@
+.members-sidebar-container {
+  background-color: #041C32;
+	color: white;
+	grid-column: 5/6;
+	grid-row: 2/11;
+	padding: 1em 1em;
+
+	img{
+		width: 3.5em;
+		border-radius: 50%;
+	}
+
+	h2{
+		margin: 0;
+	}
+}
+
+.member-details {
+	display: flex;
+	margin-top: 1em;
+	p{
+		margin-left: 1em;
+	}
+}

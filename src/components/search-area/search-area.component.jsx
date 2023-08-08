@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './search-area.styles.scss';
 import { findUser } from '../../services/user.services';
 import SearchBar from '../search-bar/search-bar.component';
-import SearchResults from '../search-results/search-results.component';
+import List from '../list/list.component';
 //rename
 function SearchArea ({setMembers, members}) {
 	const [searchResults, setSearchResults] = useState([]);
@@ -27,11 +27,17 @@ function SearchArea ({setMembers, members}) {
 		setSearchTerm(event.target.value);
 	}
 
+	function handleSearchClick(searchResult) {
+		if(members.find(member => member.uid === searchResult.uid)) return;
+		setMembers([...members, searchResult]);
+	}
+
+
 	//do something about self popping up
 	return(
 		<div className='search-container'>
 			<SearchBar handleChange={handleSearchChange} searchTerm={searchTerm}/>
-			<SearchResults searchResults={searchResults} setMembers={setMembers} members={members}/>
+			<List listItems={searchResults} onClick={handleSearchClick} listType='shaded'/>
 		</div>
 	)
 

@@ -8,7 +8,7 @@ function ChatHeader ({ name, id }) {
 	const [newName, setNewName] = useState(name);
 	const [inputOpen, setInputIsOpen] = useState(false);
 
-	function handleClick () {
+	function handleInputClick () {
 		setInputIsOpen(!inputOpen);
 	}
 
@@ -21,6 +21,7 @@ function ChatHeader ({ name, id }) {
 		updateChat(id, {name: newName});
 		setInputIsOpen(false);
 	}
+
 	//name-change component? use composition
 	return (
 		<div className='chat-header'>
@@ -37,7 +38,7 @@ function ChatHeader ({ name, id }) {
 				name &&
 					<>
 						<h1>{name}</h1>
-						<Button buttonType='invisible' type='text' onClick={handleClick}><BsPencil/></Button>
+						<Button buttonType='invisible' type='button' onClick={handleInputClick}><BsPencil/></Button>
 					</>
 			}
 		</div>

@@ -19,7 +19,7 @@ export const createUserDoc = async (userAuth) => {
 	const userSnapshot = await getDoc(userDocRef);
 	
 	if(!userSnapshot.exists()){
-		const { displayName, email, uid } = userAuth;
+		const { displayName, email, uid, photoURL } = userAuth;
 		const createdAt = new Date();
 
 		//add user to general?
@@ -29,6 +29,7 @@ export const createUserDoc = async (userAuth) => {
 				displayName: displayName.toLowerCase(),
 				email,
 				createdAt,
+				photoURL,
 				groups: [doc(db, 'groups', 'BsunAoZXnodPPo85JOVs')],
 			})
 		}catch (error){

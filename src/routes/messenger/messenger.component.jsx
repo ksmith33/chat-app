@@ -28,7 +28,7 @@ function Messenger () {
 			<Sidebar groups={chats}/>
 			<div className="content">
 				<Routes>
-					<Route index element = {<Chat selectedChat={selectedChatData} key={selectedChat}/>} />
+					<Route index element = {<Chat selectedChatData={selectedChatData} key={selectedChat}/>} />
 					<Route path = '/new' element={<CreateChat />} />
 				</Routes>
 			</div>

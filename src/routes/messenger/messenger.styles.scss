@@ -1,14 +1,13 @@
 .messenger-container {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	display: flex;
 	height: 100%;
+	width: 100%;
 }
 
 .content {
 	overflow: hidden;
 	max-height: inherit;
-	grid-column-start: 2;
-	grid-column-end: 5;
+	flex-grow: 1;
 }
 
 .exit {

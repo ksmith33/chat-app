@@ -1,8 +1,10 @@
+import { useContext } from 'react';
 import './sidebar-group.styles.scss';
+import { UserContext } from '../../contexts/user.context';
 
 function SidebarGroup ({ group, onClick, selected}){
-	const {
-					name, 
+	const { 
+					name,
 					recentMessage : {
 						messageText, 
 						sentAt, 
@@ -10,9 +12,10 @@ function SidebarGroup ({ group, onClick, selected}){
 							displayName
 						} = ''
 					} = '', 
-					id
+					id,
 				} = group;
 	const timeStamp = sentAt ? new Intl.DateTimeFormat('en-US', {month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'}).format(sentAt.toDate()) : "";
+	//could be hook?
 
 	return (
 		//button?
