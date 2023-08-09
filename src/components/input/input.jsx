@@ -36,31 +36,17 @@ function Input ({id}) {
 				maxWidthOrHeight: 480,
 				useWebWorker: true
 			}
-			
-	/* 		try {
+
+			try {
 				const compressedImage = await imageCompression(newImage, options);
-			}catch (error){
-				console.log(error)
-			} */
+				const imageRef = ref(storage, compressedImage.name);
+				const snapshot = await uploadBytes(imageRef, compressedImage);
+				const downloadUrl = await getDownloadURL(snapshot.ref);
+				await sendMessage(id, {messageText: newMessage, image: downloadUrl, sentAt: Timestamp.now(), sentBy: {displayName, uid}});
+			}catch(error){
+				console.log(error);
+			}
 			
-			imageCompression(newImage, options).then(
-				(compressedImage) => {
-					const imageRef = ref(storage, compressedImage.name);
-					return uploadBytes(imageRef, compressedImage).then(
-						(snapshot) => {
-							getDownloadURL(snapshot.ref).then(async (downloadUrl) => {
-								await sendMessage(id, {messageText: newMessage, image: downloadUrl, sentAt: Timestamp.now(), sentBy: {displayName, uid}});
-							});
-						},
-						(error) => {
-							console.log(error);
-						}
-					);
-				},
-				(error) => {
-					console.log(error);
-				}
-			)
 		}else{
 			try{
 				await sendMessage(id, {messageText: newMessage, sentAt: Timestamp.now(), sentBy: {displayName, uid}});
