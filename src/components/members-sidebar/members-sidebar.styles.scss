@@ -1,10 +1,9 @@
 .members-sidebar-container {
-  background-color: #041C32;
-	color: white;
 	grid-column: 5/6;
 	grid-row: 2/11;
 	padding: 1em 1em;
 	overflow: auto;
+	border-left: solid rgb(180, 180, 180) .05em;
 	img{
 		width: 3.5em;
 		border-radius: 50%;
@@ -21,4 +20,5 @@
 	p{
 		margin-left: 1em;
 	}
+	
 }
