@@ -7,6 +7,7 @@ import { BsFillSendFill, BsPlusCircleFill } from 'react-icons/bs';
 import { Timestamp } from 'firebase/firestore';
 import { storage } from '../../utils/firebase/firebase.utils';
 import { getDownloadURL, uploadBytes, ref } from 'firebase/storage';
+import imageCompression from 'browser-image-compression';
 
 function Input ({id}) {
 	const [newMessage, setNewMessage] = useState("");
@@ -25,22 +26,47 @@ function Input ({id}) {
 		setNewImage(event.target.files[0]);
 	}
 
+	//try catch needed
+
 	async function handleSubmit (event) {
 		event.preventDefault();
 		if(newImage) {
-			const imageRef = ref(storage, newImage.name);
-			uploadBytes(imageRef, newImage).then(
-				(snapshot) => {
-					getDownloadURL(snapshot.ref).then(async (downloadUrl) => {
-						await sendMessage(id, {messageText: newMessage, image: downloadUrl, sentAt: Timestamp.now(), sentBy: {displayName, uid}});
-					});
+			const options = {
+				maxSizeMB: .5,
+				maxWidthOrHeight: 480,
+				useWebWorker: true
+			}
+			
+	/* 		try {
+				const compressedImage = await imageCompression(newImage, options);
+			}catch (error){
+				console.log(error)
+			} */
+			
+			imageCompression(newImage, options).then(
+				(compressedImage) => {
+					const imageRef = ref(storage, compressedImage.name);
+					return uploadBytes(imageRef, compressedImage).then(
+						(snapshot) => {
+							getDownloadURL(snapshot.ref).then(async (downloadUrl) => {
+								await sendMessage(id, {messageText: newMessage, image: downloadUrl, sentAt: Timestamp.now(), sentBy: {displayName, uid}});
+							});
+						},
+						(error) => {
+							console.log(error);
+						}
+					);
 				},
 				(error) => {
 					console.log(error);
 				}
-			);
+			)
 		}else{
-			await sendMessage(id, {messageText: newMessage, sentAt: Timestamp.now(), sentBy: {displayName, uid}});
+			try{
+				await sendMessage(id, {messageText: newMessage, sentAt: Timestamp.now(), sentBy: {displayName, uid}});
+			}catch (error){
+				console.log(error);
+			}
 		}
 		resetInput();
 	}

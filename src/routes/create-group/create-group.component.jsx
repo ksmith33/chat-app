@@ -52,6 +52,7 @@ function CreateChat () {
 			<SearchArea setMembers={setMembers} members={members}/>
 			<h1>Members</h1>
 			<List listItems={members} onClick={handleMemberClick}/>
+			
 			<h2>Group Name</h2>
 			<form onSubmit={handleCheckClick}>
 				<input type='text' onChange = {handleNameChange} value={groupName} required/>
@@ -60,7 +61,6 @@ function CreateChat () {
 					<Button buttonType='chat' type='submit'><BsCheckLg /></Button>
 				</div>
 			</form>
-			
 		</div>
 	)
 }
