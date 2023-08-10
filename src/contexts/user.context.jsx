@@ -12,7 +12,6 @@ export function UserProvider({ children }){
 	const [loading, setLoading] = useState(true);
 	
 	useEffect(() => {
-		//might not matter when do username thing
 		const unsubscribe = onAuthStateChangedListener((user) => {
 			if(user){
 				createUserDoc(user);

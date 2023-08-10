@@ -2,40 +2,7 @@
 	display: flex;
 	margin: 1em;
 
-	//fix nesting in other style sheets
-	.message-content {
-		max-width: 30em;
-		min-width: 20em;
-		overflow-wrap: break-word;
-		display: flex;
-		flex-direction: column;
-
-		.message-body {
-			background-color: #E0F4FF;
-			min-height: 3.5em;
-			border-radius: 1em;
-			padding: 1em;
-			box-shadow: 0em .1em .3em rgb(179, 179, 179);
-			display: flex;
-			flex-direction: column;
-
-			.timestamp {
-				color: grey;
-				float: right;
-			}
-
-			p, img {
-				margin: 0 0 1em 0;
-			}
-			
-		}
-
-		.sender {
-			font-weight: 500;
-		}
-	}
-
-	&.sent{
+	&.sent {
 		flex-direction: row-reverse;
 		.sender {
 			color: transparent;
@@ -43,3 +10,33 @@
 	}
 }
 
+.message-content {
+	max-width: 30em;
+	min-width: 20em;
+
+	.message-body {
+		overflow-wrap: break-word;
+		background-color: #E0F4FF;
+		min-height: 3.5em;
+		border-radius: 1em;
+		padding: 1em;
+		box-shadow: 0em .1em .3em rgb(179, 179, 179);
+		display: flex;
+		flex-direction: column;
+
+		.timestamp {
+			color: grey;
+			margin: 0;
+		}
+
+		p, img {
+			margin: 0 0 1em 0;
+		}
+		
+	}
+
+	.sender {
+		margin: 0;
+		font-weight: 500;
+	}
+}

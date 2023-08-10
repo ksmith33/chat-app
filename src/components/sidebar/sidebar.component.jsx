@@ -1,10 +1,10 @@
-import { useContext, useState } from 'react';
-import './sidebar.styles.scss';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { BiSolidMessageAdd } from 'react-icons/bi';
 import SidebarTabs from '../sidebar-tabs/sidebar-tabs.component';
 import SidebarGroups from '../sidebar-groups/sidebar-groups.component';
 import Button from '../button/button.component';
-import {BiSolidMessageAdd} from 'react-icons/bi'
-import { useNavigate, useParams } from 'react-router-dom';
+import './sidebar.styles.scss';
 
 const sidebarTabs = [
 	{
@@ -24,33 +24,25 @@ const sidebarTabs = [
 		groupType: 2,
 	}
 ]
-//fix add group button
 
 function Sidebar ({ groups }) {
 	const [selectedTab, setSelectedTab] = useState(0);
-	const navigate = useNavigate();
 	const groupType = sidebarTabs[selectedTab].groupType;
+	const navigate = useNavigate();
+	const filteredGroups = groupType ? groups.filter((group) => (group.type === groupType)) : groups; 
 
 	function handleClick () {
 		navigate('/new');
 	}
-	//rename to selectedGroup
- 	const filteredGroups = groupType ? groups.filter((group) => {
-		return group.type === groupType;
-	}) : groups; 
-	//need all the users groups
+
 	return(
 		<div className='sidebar-container'>
-			<SidebarTabs 
-				selectedTab={ selectedTab } 
-				setSelectedTab={ setSelectedTab } 
-				tabs={ sidebarTabs }
-			/>
+			<SidebarTabs selectedTab={ selectedTab } setSelectedTab={ setSelectedTab } tabs={ sidebarTabs }/>
+
 			<div className='sidebar-body'>
 				<SidebarGroups groups={ filteredGroups } />
-				<Button buttonType='rounded' type='button' onClick={handleClick}><BiSolidMessageAdd /></Button>
+				<Button buttonType='rounded' type='button' onClick={ handleClick } aria-label='create new group'><BiSolidMessageAdd /></Button>
 			</div>
-		
 		</div>
 	)
 }

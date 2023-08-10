@@ -1,10 +1,10 @@
+import { Routes, Route } from 'react-router-dom';
 import Authentication from "./routes/authentication/authentication.component";
-import { Routes, Route, Navigate } from 'react-router-dom';
 import Messenger from "./routes/messenger/messenger.component";
-import './App.scss';
 import ProtectedRoute from "./routes/protected-route/protected-route.component";
-import { useContext, useState, useEffect} from "react";
+import { useContext } from "react";
 import { UserContext } from "./contexts/user.context";
+import './App.scss';
 
 function App() {
 	const { currentUser, loading } = useContext(UserContext);
@@ -13,14 +13,13 @@ function App() {
     <Routes>
       <Route 
 				path='/*' 
-				element= {
+				element={
 					<ProtectedRoute isLoggedIn={ currentUser } isLoading={ loading }>
 						<Messenger />
 					</ProtectedRoute>
 				}
-			>
-			</Route>
-			<Route path='Auth' element={<Authentication />}/>
+			/>
+			<Route path='Auth' element={ <Authentication/> }/>
     </Routes>
   )
 }

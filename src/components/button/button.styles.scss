@@ -18,27 +18,22 @@
 		width: 1.5em;
 		height: 1.5em;
 		padding: .3em 0em;
-		&:hover {
-			cursor: pointer;
-		}
-	}
 
-	&:hover {
-		cursor: pointer;
 	}
 
 	&.invisible {
 		background-color: transparent;
 		font-size: 1.5rem;
 		color: white;
-		&:hover {
-			cursor: pointer;
-		}
 	}
 
 	&.chat {
+		background-color: transparent;
 		width: 1em;
 		font-size: 2.5rem;
-		background-color: transparent;
+	}
+
+	&:hover {
+		cursor: pointer;
 	}
 }

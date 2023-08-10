@@ -12,8 +12,9 @@
 	overflow: auto;
 	display: flex;
 	flex-direction: column;
-	height: inherit;
-	Button {
+	height: 100%;
+
+	& > button {
 		margin: .3em;
 		align-self: flex-end;
 		position: absolute;

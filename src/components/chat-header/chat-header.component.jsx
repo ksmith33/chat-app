@@ -1,14 +1,14 @@
-import Button from "../button/button.component";
-import { BsPencil, BsCheckLg } from "react-icons/bs";
-import './chat-header.styles.scss';
 import { useState } from "react";
+import { BsPencil, BsCheckLg } from "react-icons/bs";
+import Button from "../button/button.component";
 import { updateChat } from "../../services/chats.services";
+import './chat-header.styles.scss';
 
 function ChatHeader ({ name, id }) {
 	const [newName, setNewName] = useState(name);
 	const [inputOpen, setInputIsOpen] = useState(false);
 
-	function handleInputClick () {
+	function handleEditClick () {
 		setInputIsOpen(!inputOpen);
 	}
 
@@ -16,32 +16,37 @@ function ChatHeader ({ name, id }) {
 		setNewName(event.target.value);
 	}
 
-	function handleSubmit (event) {
+	async function handleSubmit (event) {
 		event.preventDefault();
-		updateChat(id, {name: newName});
+
+		try {
+			await updateChat(id, { name: newName });
+		}catch (error) {
+			console.log(error);
+		}
 		setInputIsOpen(false);
 	}
 
-	//name-change component? use composition
 	return (
-		<div className='chat-header'>
+		<header className='chat-header'>
 			{inputOpen ? 
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={ handleSubmit }>
 					<input type="text" 
-						onChange = {handleInputChange}
-						value = {newName}
+						onChange = { handleInputChange }
+						value = { newName }
+						aria-label="chat name input"
 						required
 					/>
-					<Button buttonType='invisible' type='submit'><BsCheckLg /></Button>
+					<Button buttonType='invisible' type='submit' aria-label='confirm'><BsCheckLg /></Button>
 				</form>
 			:
 				name &&
 					<>
 						<h1>{name}</h1>
-						<Button buttonType='invisible' type='button' onClick={handleInputClick}><BsPencil/></Button>
+						<Button buttonType='invisible' type='button' onClick={ handleEditClick } aria-label='edit chat name'><BsPencil/></Button>
 					</>
 			}
-		</div>
+		</header>
 	)
 }
 

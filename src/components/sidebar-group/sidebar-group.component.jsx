@@ -1,8 +1,6 @@
-import { useContext } from 'react';
 import './sidebar-group.styles.scss';
-import { UserContext } from '../../contexts/user.context';
 
-function SidebarGroup ({ group, onClick, selected}){
+function SidebarGroup ({ group, onClick, onKeyPress, selected }){
 	const { 
 					name,
 					recentMessage : {
@@ -14,21 +12,19 @@ function SidebarGroup ({ group, onClick, selected}){
 					} = '', 
 					id,
 				} = group;
-	const timeStamp = sentAt ? new Intl.DateTimeFormat('en-US', {month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'}).format(sentAt.toDate()) : "";
-	//could be hook?
+	const timeStamp = sentAt ? new Intl.DateTimeFormat('en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(sentAt.toDate()) : "";
 
 	return (
-		//button?
-		<div className= {`sidebar-group-container ${selected ? "selected" : ""}`} onClick={() => onClick(id)}>
+		<section className= { `sidebar-group-container ${selected ? "selected" : ""}` } onClick={ () => onClick(id) } onKeyDown={ (event) => onKeyPress(event, id) } tabIndex="0" role="button">
 			<h2>{ name } </h2>
 			<div className="recent-message">
 				<div className='message-header'>
 					<h3>{ displayName }</h3>
 					<h3>{ timeStamp } </h3>
 				</div>
-				<span>{ messageText }</span>
+				<p>{ messageText }</p>
 			</div>
-		</div>
+		</section>
 	)
 }
 

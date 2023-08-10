@@ -9,14 +9,11 @@ import { storage } from '../../utils/firebase/firebase.utils';
 import { getDownloadURL, uploadBytes, ref } from 'firebase/storage';
 import imageCompression from 'browser-image-compression';
 
-function Input ({id}) {
+function Input ({ id }) {
 	const [newMessage, setNewMessage] = useState("");
 	const [newImage, setNewImage] = useState(null);
-
-	const inputRef = useRef(null);
-
-	const { currentUser } = useContext(UserContext);
-	const { displayName, uid } = currentUser;
+	const imageInputRef = useRef(null);
+	const { currentUser: { displayName, uid } } = useContext(UserContext);
 	
 	function handleInputChange (event) {
 		setNewMessage(event.target.value);
@@ -26,10 +23,9 @@ function Input ({id}) {
 		setNewImage(event.target.files[0]);
 	}
 
-	//try catch needed
-
 	async function handleSubmit (event) {
 		event.preventDefault();
+
 		if(newImage) {
 			const options = {
 				maxSizeMB: .5,
@@ -42,32 +38,40 @@ function Input ({id}) {
 				const imageRef = ref(storage, compressedImage.name);
 				const snapshot = await uploadBytes(imageRef, compressedImage);
 				const downloadUrl = await getDownloadURL(snapshot.ref);
-				await sendMessage(id, {messageText: newMessage, image: downloadUrl, sentAt: Timestamp.now(), sentBy: {displayName, uid}});
+				await sendMessage(id, { 
+					messageText: newMessage, 
+					image: downloadUrl, 
+					sentAt: Timestamp.now(), 
+					sentBy: { displayName, uid } 
+				});
 			}catch(error){
 				console.log(error);
 			}
 			
 		}else{
 			try{
-				await sendMessage(id, {messageText: newMessage, sentAt: Timestamp.now(), sentBy: {displayName, uid}});
+				await sendMessage(id, {
+					messageText: newMessage, 
+					sentAt: Timestamp.now(), 
+					sentBy: {displayName, uid}
+				});
 			}catch (error){
 				console.log(error);
 			}
 		}
+
 		resetInput();
 	}
 
 	function resetInput() {
 		setNewMessage('');
 		setNewImage(null);
-		inputRef.current.value = '';
+		imageInputRef.current.value = '';
 	}
 
-	//maybe allow sending files too
-	//is there a better way to display attached images?
 	return(
 		<div className='input-container'>
-			<form onSubmit={handleSubmit} className='form'>
+			<form onSubmit={ handleSubmit }>
 				<label htmlFor='image-upload'>
 					<BsPlusCircleFill />
 				</label>
@@ -76,25 +80,25 @@ function Input ({id}) {
 					className='image-upload'
 					id = 'image-upload'
 					type = "file"
-					onChange = {handleImageChange}	
+					onChange = { handleImageChange }	
 					name = 'image'
 					accept="image/*"
-					ref = {inputRef}
-					disabled = {!id}
+					ref = { imageInputRef }
+					disabled = { !id }
 				/>
 
 				<input
-					className='message-box'
+					className='message-input'
 					type = 'text'
-					onChange = {handleInputChange}
+					onChange = { handleInputChange }
 					name = 'text'
-					value = {newMessage}
+					value = { newMessage }
 					placeholder = 'type a message'
-					required = {!newImage && !newMessage}
-					disabled ={!id}
+					required = { !newImage && !newMessage }
+					disabled ={ !id }
 				/>
 
-				<Button type='submit' buttonType='chat'><BsFillSendFill /></Button>
+				<Button type='submit' buttonType='chat' aria-label='send message'><BsFillSendFill /></Button>
 			</form>
 		</div>
 	)

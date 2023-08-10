@@ -1,9 +1,8 @@
 import { useContext, useRef, useEffect } from 'react';
-import './message.styles.scss';
 import { UserContext } from '../../contexts/user.context';
+import './message.styles.scss';
 
 function Message ({ message }) {
-	//will need user id in the case of users with same name
 	const { 
 		sentBy: {
 			displayName,
@@ -16,25 +15,24 @@ function Message ({ message }) {
 	const { currentUser } = useContext(UserContext);
 	const timestamp = new Intl.DateTimeFormat('en-US', {month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'}).format(sentAt.toDate());
 	const isSender = uid === currentUser.uid;
-//what semantic tag instead of span
-//fix invisible display name
-//find some way to account for image popping in
 	const messageRef = useRef();
 
 	useEffect(() => {
-		window.requestAnimationFrame(() => messageRef.current?.scrollIntoView({
-			behavior: 'smooth'
-		}));
+		window.requestAnimationFrame(
+			() => messageRef.current?.scrollIntoView({
+				behavior: 'smooth'
+			})
+		);
 	}, []);
 
 	return (
-		<div className={`message-container ${isSender ? 'sent' : ''}`} ref={messageRef}>
+		<div className={ `message-container ${isSender ? 'sent' : ''}` } ref={ messageRef }>
 			<div className='message-content'>
-				<span className='sender'>{displayName}</span>
+				<p className='sender'>{ displayName }</p>
 				<div className='message-body'>
-					<p>{messageText}</p>
-					{image && <img src={image} alt="" />}
-					<span className='timestamp'>{timestamp}</span>
+					<p>{ messageText }</p>
+					{ image && <img src={ image } alt='' /> }
+					<p className='timestamp'>{ timestamp }</p>
 				</div>
 			</div>
 		</div>

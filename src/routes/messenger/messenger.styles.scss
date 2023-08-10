@@ -1,16 +1,14 @@
 .messenger-container {
 	display: flex;
 	height: 100%;
-	width: 100%;
 }
 
-.content {
-	overflow: hidden;
-	max-height: inherit;
+main {
+	overflow: auto;
 	flex-grow: 1;
 }
 
-.exit {
+.exit-button {
 	position: absolute;
 	transform: translateX(92em) translateY(1.5em);
 	z-index: 1;

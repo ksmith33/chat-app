@@ -6,7 +6,6 @@ export const ChatContext = createContext({
 });
 
 export function ChatProvider({ children }){
-	//maybe get chat last in
 	const [selectedChat, setSelectedChat] = useState(null);
 
 	const value = { selectedChat, setSelectedChat };

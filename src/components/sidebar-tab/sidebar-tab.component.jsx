@@ -1,9 +1,8 @@
 import './sidebar-tab.styles.scss';
 
-function SidebarTab ({ name, onClick, selected }) {
+function SidebarTab ({ name, onClick, onKeyPress, selected }) {
 	return (
-		//button?
-		<div onClick={onClick} className={`sidebar-tab-container ${selected ? "selected" : ""}`}>
+		<div onClick={ onClick } className={ `sidebar-tab-container ${selected ? "selected" : ""}` } onKeyDown={ onKeyPress } tabIndex="0" role="button">
 			<h2>{name}</h2>
 		</div>
 	)

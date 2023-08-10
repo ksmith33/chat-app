@@ -1,5 +1,4 @@
 .input-container {
-
 	form {
 		display: flex;
 		align-items: center;
@@ -8,7 +7,7 @@
 	label {
 		font-size: 2.5rem;
 		margin: 0em .3em;
-		&:hover{
+		&:hover {
 			cursor: pointer;
 		}
 	}
@@ -17,7 +16,7 @@
 	grid-column: 1/5;
 }
 
-.message-box {
+.message-input {
 	border: none;
 	outline: none;
 	height: 2em;
@@ -34,5 +33,3 @@ input::file-selector-button {
 	z-index: -1;
 	position: absolute;
 }
-
-//if u don't have to nest then don't

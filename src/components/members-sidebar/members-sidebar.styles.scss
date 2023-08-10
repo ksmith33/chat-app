@@ -4,21 +4,28 @@
 	padding: 1em 1em;
 	overflow: auto;
 	border-left: solid rgb(180, 180, 180) .05em;
-	img{
+
+	img {
 		width: 3.5em;
 		border-radius: 50%;
 	}
 
-	h2{
+	h2 {
 		margin: 0;
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
 	}
 }
 
 .member-details {
 	display: flex;
 	margin-top: 1em;
-	p{
+
+	p {
 		margin-left: 1em;
 	}
-	
 }
