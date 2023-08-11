@@ -1,6 +1,7 @@
-.sidebar-tab-container{
+.sidebar-tab-container {
 	width: 34%;
 	text-align: center;
+	position: relative;
 	
 	&:hover {
 		background-color: #ffffff;
@@ -11,5 +12,15 @@
 	&.selected {
 		background-color: #ffffff;
 		color: black;
+	}
+
+	button {
+		position: absolute;
+		background-color: transparent;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: none;
 	}
 }

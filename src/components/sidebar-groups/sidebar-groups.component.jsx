@@ -15,16 +15,12 @@ function SidebarGroups({ groups }){
 		}
 	}
 
-	function handleKeyPress (event, id) {
-		if (event.key === 'Enter' || event.key === ' ') handleClick(id);
-	}
-
 	return (
 		<div>
 			{
 				groups.map((group) => {
 					const { id } = group;
-					return <SidebarGroup group={ group } key={ id } onClick={ handleClick } onKeyPress={ handleKeyPress } selected={ id === selectedChat }/>
+					return <SidebarGroup group={ group } key={ id } onClick={ handleClick } selected={ id === selectedChat }/>
 				})
 			}		
 		</div>

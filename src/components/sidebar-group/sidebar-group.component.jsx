@@ -15,7 +15,8 @@ function SidebarGroup ({ group, onClick, onKeyPress, selected }){
 	const timeStamp = sentAt ? new Intl.DateTimeFormat('en-US', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' }).format(sentAt.toDate()) : "";
 
 	return (
-		<section className= { `sidebar-group-container ${selected ? "selected" : ""}` } onClick={ () => onClick(id) } onKeyDown={ (event) => onKeyPress(event, id) } tabIndex="0" role="button">
+		<section className= { `sidebar-group-container ${selected ? "selected" : ""}` }>
+			<button onClick={() => onClick(id)} aria-label={`select ${name} group`}/>
 			<h2>{ name } </h2>
 			<div className="recent-message">
 				<div className='message-header'>
