@@ -1,6 +1,6 @@
 import './sidebar-group.styles.scss';
 
-function SidebarGroup ({ group, onClick, onKeyPress, selected }){
+function SidebarGroup ({ group, onClick, selected }){
 	const { 
 					name,
 					recentMessage : {
