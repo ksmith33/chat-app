@@ -2,7 +2,12 @@
 A realtime messaging app created using ReactJS and Firebase.
 ## Live Demo 
 https://main--strong-babka-c26cda.netlify.app/auth
-## Screenshots
+## Video Demo
+
+
+https://github.com/ksmith33/chit-chat/assets/54692831/c0fd6acb-ad55-4f64-8300-b1dafcff437c
+
+
 ## Tech Stack
 - Javascript ES6
 - React 18
