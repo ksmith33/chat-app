@@ -16,14 +16,14 @@ function SidebarGroups({ groups }){
 	}
 
 	return (
-		<div>
+		<>
 			{
 				groups.map((group) => {
 					const { id } = group;
 					return <SidebarGroup group={ group } key={ id } onClick={ handleClick } selected={ id === selectedChat }/>
 				})
 			}		
-		</div>
+		</>
 	)
 }
 

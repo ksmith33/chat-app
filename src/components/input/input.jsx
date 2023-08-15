@@ -70,37 +70,36 @@ function Input ({ id }) {
 	}
 
 	return(
-		<div className='input-container'>
-			<form onSubmit={ handleSubmit }>
-				<label htmlFor='image-upload'>
-					<BsPlusCircleFill />
-				</label>
+		<form onSubmit={ handleSubmit } className='input-form-container'>
+			<label htmlFor='image-upload'>
+				<BsPlusCircleFill />
+			</label>
 
-				<input
-					className='image-upload'
-					id = 'image-upload'
-					type = "file"
-					onChange = { handleImageChange }	
-					name = 'image'
-					accept="image/*"
-					ref = { imageInputRef }
-					disabled = { !id }
-				/>
+			<input
+				className='image-upload'
+				id = 'image-upload'
+				type = "file"
+				onChange = { handleImageChange }	
+				name = 'image'
+				accept="image/*"
+				ref = { imageInputRef }
+				disabled = { !id }
+			/>
 
-				<input
-					className='message-input'
-					type = 'text'
-					onChange = { handleInputChange }
-					name = 'text'
-					value = { newMessage }
-					placeholder = 'type a message'
-					required = { !newImage && !newMessage }
-					disabled ={ !id }
-				/>
+			<input
+				className='message-input'
+				type = 'text'
+				onChange = { handleInputChange }
+				name = 'text'
+				value = { newMessage }
+				placeholder = 'type a message'
+				required = { !newImage && !newMessage }
+				disabled ={ !id }
+			/>
 
-				<Button type='submit' buttonType='chat' aria-label='send message'><BsFillSendFill /></Button>
-			</form>
-		</div>
+			<Button type='submit' buttonType='chat' aria-label='send message'><BsFillSendFill /></Button>
+		</form>
+
 	)
 }
 

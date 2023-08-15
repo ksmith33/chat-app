@@ -36,14 +36,14 @@ function Sidebar ({ groups }) {
 	}
 
 	return(
-		<div className='sidebar-container'>
+		<aside className='sidebar-container'>
 			<SidebarTabs selectedTab={ selectedTab } setSelectedTab={ setSelectedTab } tabs={ sidebarTabs }/>
 
 			<div className='sidebar-body'>
 				<SidebarGroups groups={ filteredGroups } />
 				<Button buttonType='rounded' type='button' onClick={ handleClick } aria-label='create new group'><BiSolidMessageAdd /></Button>
 			</div>
-		</div>
+		</aside>
 	)
 }
 

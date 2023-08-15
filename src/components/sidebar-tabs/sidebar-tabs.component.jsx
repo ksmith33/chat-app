@@ -8,7 +8,7 @@ function SidebarTabs ({ selectedTab, setSelectedTab, tabs }) {
 	}
 
 	return (
-		<div className='tabs-container'>
+		<ul className='tabs-container'>
 			{
 				tabs.map((tab, index) => {
 					const { name } = tab;
@@ -17,7 +17,7 @@ function SidebarTabs ({ selectedTab, setSelectedTab, tabs }) {
 					)
 				})
 			}
-		</div>
+		</ul>
 	)
 }
 
