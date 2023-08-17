@@ -8,3 +8,12 @@
 	grid-column-start: 1;
 	grid-column-end: 6;
 }
+
+@media screen and (max-width: 700px) {
+	.chat-header{
+		input {
+			font-size:medium;
+		}
+	}
+
+}

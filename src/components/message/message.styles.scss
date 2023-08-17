@@ -1,6 +1,5 @@
 .message-container {
 	display: flex;
-	margin: 1em;
 
 	&.sent {
 		flex-direction: row-reverse;
@@ -11,8 +10,8 @@
 }
 
 .message-content {
-	max-width: 30em;
-	min-width: 20em;
+	max-width: 50%;
+	min-width: 40%;
 
 	.message-body {
 		overflow-wrap: break-word;
@@ -38,5 +37,16 @@
 	.sender {
 		margin: 0;
 		font-weight: 500;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.message-container{
+		align-items: center;
+		flex-direction: column;
+		
+		&.sent {
+			flex-direction: column;
+		}
 	}
 }

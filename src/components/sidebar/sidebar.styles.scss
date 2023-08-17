@@ -5,7 +5,9 @@
 	display: flex;
 	flex-direction: column;
 	width: 20em;
+	flex-shrink: 0;
 	border-right: solid rgb(255, 255, 255) .05em;
+	
 }
 
 .sidebar-body {
@@ -13,11 +15,20 @@
 	display: flex;
 	flex-direction: column;
 	height: 100%;
+	width: 100%;
 
 	& > button {
 		margin: .3em;
 		align-self: flex-end;
 		position: absolute;
-		transform: translateY(17em);
+		top: 87%;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.sidebar-container {
+		flex-direction: row;
+		width: 12.6em;
+		flex-shrink: 0;
 	}
 }
