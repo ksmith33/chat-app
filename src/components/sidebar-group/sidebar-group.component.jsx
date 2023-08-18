@@ -1,3 +1,4 @@
+import Button from "../button/button.component";
 import './sidebar-group.styles.scss';
 
 function SidebarGroup ({ group, onClick, selected }){
@@ -16,7 +17,7 @@ function SidebarGroup ({ group, onClick, selected }){
 
 	return (
 		<section className= { `sidebar-group-container ${selected ? "selected" : ""}` }>
-			<button onClick={() => onClick(id)} aria-label={`select ${name} group`}/>
+			<Button onClick={() => onClick(id)} buttonType='listItem' aria-label={`select ${name} group`}/>
 			<h2>{ name } </h2>
 			<div className="recent-message">
 				<div className='message-header'>

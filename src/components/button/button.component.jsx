@@ -4,7 +4,8 @@ const BUTTON_TYPES = {
 	default: 'default',
 	chat: 'chat',
 	invisible: 'invisible',
-	rounded: 'rounded'
+	rounded: 'rounded',
+	listItem: 'listItem'
 }
 
 function utton ({ children, buttonType, ...otherProps }) {

@@ -1,13 +1,11 @@
 .sidebar-container {
 	background-color: #041C32;
 	color: white;
-	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	width: 20em;
-	flex-shrink: 0;
 	border-right: solid rgb(255, 255, 255) .05em;
-	
+	flex-basis: 20em;
+	min-width: 0em;
 }
 
 .sidebar-body {
@@ -25,10 +23,10 @@
 	}
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
 	.sidebar-container {
 		flex-direction: row;
-		width: 12.6em;
+		flex-basis: 12.6em;
 		flex-shrink: 0;
 	}
 }
