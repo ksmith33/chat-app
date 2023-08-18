@@ -3,6 +3,7 @@
 
 	&.sent {
 		flex-direction: row-reverse;
+
 		.sender {
 			color: transparent;
 		}
@@ -16,7 +17,6 @@
 	.message-body {
 		overflow-wrap: break-word;
 		background-color: #E0F4FF;
-		min-height: 3.5em;
 		border-radius: 1em;
 		padding: 1em;
 		box-shadow: 0em .1em .3em rgb(179, 179, 179);
@@ -38,3 +38,4 @@
 		margin: 0;
 	}
 }
+

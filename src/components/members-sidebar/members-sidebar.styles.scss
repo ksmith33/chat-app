@@ -1,7 +1,7 @@
 .members-sidebar-container {
 	grid-row: 2/11;
 	padding: 1em 1em;
-	border-left: solid rgb(180, 180, 180) .05em;
+	border-left: .05em solid rgb(180, 180, 180);
 
 	img {
 		width: 30%;
@@ -12,17 +12,12 @@
 	h2 {
 		margin: 0;
 	}
-
-	ul {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-	}
 }
 
 .member-details {
 	display: flex;
 	margin-top: 1em;
+	
 	p {
 		margin-left: 1em;
 	}

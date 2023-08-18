@@ -3,20 +3,14 @@
 	text-align: center;
 	position: relative;
 	
-	&:hover {
-		background-color: #ffffff;
-		cursor: pointer;
-		color: black;
-	}
-
-	&.selected {
+	&:hover, &.selected {
 		background-color: #ffffff;
 		color: black;
 	}
 }
 
 @media screen and (max-width: 1000px) {
-	.sidebar-tab-container{
+	.sidebar-tab-container {
 		width: 100%;
 	}
 }

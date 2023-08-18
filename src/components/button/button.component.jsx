@@ -8,10 +8,10 @@ const BUTTON_TYPES = {
 	listItem: 'listItem'
 }
 
-function utton ({ children, buttonType, ...otherProps }) {
+function Button ({ children, buttonType, ...otherProps }) {
 	return (
 		<button className={ `button-container ${ BUTTON_TYPES[buttonType] }` }{ ...otherProps }> { children } </button>
 	)
 }
 
-export default utton;
+export default Button;

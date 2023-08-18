@@ -6,11 +6,17 @@
 
 header {
 	height: 4.35em;
+	width: 100%;
 	padding: 0 1em;
 	display: flex;
 	align-items: center;
-	flex-shrink: 0;
 	z-index: 0;
 	background-color: #041C32;
 	color: white;
+}
+
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }

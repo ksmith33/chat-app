@@ -1,11 +1,7 @@
 .tabs-container {
 	display: flex;
 	justify-content: space-between;
-	width: 100%;
 	height: 4.35em;
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
 }
 
 @media screen and (max-width: 1000px) {

@@ -2,7 +2,7 @@
 	padding: 1em 1em;
 	position: relative;
 
-	&.selected {
+	&.selected, &:hover {
 		background-color: #ffffff;
 		color: black;
 	}
@@ -12,17 +12,7 @@
 		white-space: nowrap;
  		overflow: hidden;
   	text-overflow: ellipsis;
-		
 	}
-
-	&:hover {
-		background-color: #ffffff;
-		color: black;
-	}
-}
-
-.recent-message {
-	height: inherit;
 }
 
 .message-header {
