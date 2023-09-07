@@ -18,7 +18,6 @@ function ChatHeader ({ name, id }) {
 
 	async function handleSubmit (event) {
 		event.preventDefault();
-
 		try {
 			await updateChat(id, { name: newName });
 		}catch (error) {

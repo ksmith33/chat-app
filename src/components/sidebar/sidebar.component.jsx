@@ -15,7 +15,6 @@ const sidebarTabs = [
 	{
 		id: 2,
 		name: "Groups",
-		//changeMaybe
 		groupType: 1,
 	},
 	{

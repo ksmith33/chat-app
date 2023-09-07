@@ -5,7 +5,6 @@ import useSnapshot from '../../hooks/useSnapshot';
 import './message-area.styles.scss';
 
 function MessageArea ({ id }) {
-	//limit amount of messages
 	const messages = useSnapshot(collection(db, "groups", id, 'messages'), [orderBy("sentAt", "asc")]);
 
 	return (
