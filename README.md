@@ -1,7 +1,7 @@
 # Chit Chat
 A realtime messaging app created using ReactJS and Firebase.
 ## Live Demo 
-https://main--strong-babka-c26cda.netlify.app/auth
+https://strong-babka-c26cda.netlify.app/auth
 ## Video Demo
 
 
