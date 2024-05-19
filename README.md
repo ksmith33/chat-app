@@ -21,6 +21,6 @@ $ npm install
 $ npm run dev
 ```
 ### Configure App
-Optionally, you can configure the app to use your own Firebase Project by replacing ```firebaseConfig``` in ```firebase.utils.js``` with your own Firebase Project Configuration: https://firebase.google.com/docs/web/learn-more#config-object. 
+You can configure the app to use your own Firebase Project by replacing ```firebaseConfig``` in ```firebase.utils.js``` with your own Firebase Project Configuration: https://firebase.google.com/docs/web/learn-more#config-object. 
 
 ##
